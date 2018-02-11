@@ -47,5 +47,7 @@ $router->post('user/warehouse/add/', 'UserController@addUserToWarehouse');
 
 $router->post('/all/user', 'UserController@allUsers');
 
+$router->get('/getWarehouses', 'WarehouseController@getWarehouse');
+
 //pobranie uzytkowników
 

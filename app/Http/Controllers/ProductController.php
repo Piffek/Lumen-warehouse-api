@@ -40,12 +40,10 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         if ($this->product->create($request->all())) {
-            $msg = ['msg' => 'product added successfully'];
+            return response()->json(['msg' => 'product added successfully'], 200);
         } else {
-            $msg = ['msg' => 'product added error'];
+            return response()->json(['msg' => 'product added error'], 404);
         }
-
-        return json_encode($msg);
     }
 
     /**
@@ -57,12 +55,10 @@ class ProductController extends Controller
         $oneProduct = $this->product->where('id', $request->id)->first();
         if (isset($oneProduct)) {
             $oneProduct->delete();
-            $msg = ['msg' => 'product remove successfully'];
+            return response()->json(['msg' => 'product remove successfully'], 200);
         } else {
-            $msg = ['msg' => 'product remove error'];
+            return response()->json(['msg' => 'product remove error'], 404);
         }
-
-        return json_encode($msg);
     }
 
     /**
@@ -72,11 +68,9 @@ class ProductController extends Controller
     public function updateProduct(Request $request)
     {
         if ($this->product->find($request->id)->update($request->all())) {
-            $msg = ['msg' => 'product updated successfully'];
+            return response()->json(['msg' => 'product update successfully'], 200);
         } else {
-            $msg = ['msg' => 'product updated error'];
+            return response()->json(['msg' => 'product update successfully'], 404);
         }
-
-        return json_encode($msg);
     }
 }
